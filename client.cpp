@@ -13,6 +13,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include <strings.h>
+#include <mutex>
 
 #define SERVER_IP "127.0.0.1"
 #define PORT 8080

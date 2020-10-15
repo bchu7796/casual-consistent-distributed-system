@@ -11,6 +11,7 @@
 #include <vector>
 #include <thread>
 #include <algorithm>
+#include <cstring>
 #include "server.hpp"
 
 server::server():server_id(-1), local_time(0){}
@@ -98,7 +99,7 @@ int server::replicated_write(const char * datacenter_ip, int datacenter_port, st
     */
     //initailize address structure
     struct sockaddr_in datacenter_address;
-    bzero(&datacenter_address, sizeof(datacenter_address));
+    memset(&datacenter_address, 0, sizeof(datacenter_address));
     datacenter_address.sin_family = PF_INET;
     //inet_pton(AF_INET, datacenter_ip, &(datacenter_address.sin_addr));
     datacenter_address.sin_addr.s_addr = inet_addr(datacenter_ip);
@@ -181,7 +182,7 @@ int server::client_read(int new_socket, int client_id){
 
 void server::test_delay(int datacenter_port, std::string key, std::string value, int client_id){
     struct sockaddr_in datacenter_address;
-    bzero(&datacenter_address, sizeof(datacenter_address));
+    memset(&datacenter_address, 0, sizeof(datacenter_address));
     datacenter_address.sin_family = PF_INET;
     datacenter_address.sin_addr.s_addr = inet_addr(server_ip.c_str());
     datacenter_address.sin_port = htons(datacenter_port);
@@ -495,7 +496,7 @@ int server::listen_client(){
     }
 
     //initailize address structure
-    bzero(&server_address, sizeof(server_address));
+    memset(&server_address, 0, sizeof(server_address));
     server_address.sin_family = PF_INET;
     server_address.sin_addr.s_addr = INADDR_ANY;
     server_address.sin_port = htons(server_port);
