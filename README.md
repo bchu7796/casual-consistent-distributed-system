@@ -1,7 +1,7 @@
-# Causal Consistency Server
+# Causal Consistency Distributed System
 When a distributed system is composed of multiple servers/datacenters and multiple clients. It might encounter issues related to ordering. The messages travel through the Internet might arrived replicated servers in unexpected order. If these messages are causal related, the state of the servers would suffer from inconsistency.
 
-The system implemented is aim at solving the problem metioned earlier.  The servers commit replicated requests in causal ordering, this allows distributed system to stay in causal consistency.
+The system implemented is aim at solving the problem metioned earlier. The servers commit replicated requests in causal ordering, this allows distributed system to stay in causal consistency.
 
 ## Examples
 The following image shows the problem caused by unexpected ordering.
@@ -40,7 +40,7 @@ The system enforces causal ordering and prevent the issue shown in the image.
     ```bash
     ./client
     ```
-## Commands on the client user interface
+## Client Commands
 1. Read a variable
 
     ```bash
@@ -53,7 +53,7 @@ The system enforces causal ordering and prevent the issue shown in the image.
     write 'key' 'value' 
     ```
 
-## Test
+## Testing
 1. Unzip "test_env.zip"
     ``` bash
     unzip test_env.zip
@@ -87,7 +87,3 @@ The system enforces causal ordering and prevent the issue shown in the image.
         ```
     5. Server3 would delay message z from client2 until it receives message x.
 
-    
-
-## Reference
-Penn State CSE 513 fall 2019 LAB 2.
